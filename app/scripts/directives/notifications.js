@@ -9,11 +9,15 @@
 angular.module('riskidentApp')
   .directive('notifications', function (notifier) {
     return {
-      template: '<div></div>',
+      templateUrl: 'views/directives/notifications.html',
       restrict: 'E',
       link: function postLink(scope, element, attrs) {
+        scope.notifications = []
         scope.$watch(function(){
           scope.notifications = notifier.get();
+          // console.log(scope.notifications, notifier.get())
+          return notifier.get()
+          // console.log(notifier.get)
         })
       }
     };

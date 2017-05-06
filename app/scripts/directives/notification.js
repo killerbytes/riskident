@@ -7,12 +7,19 @@
  * # notification
  */
 angular.module('riskidentApp')
-  .directive('notification', function () {
+  .directive('notification', function (notifier, $timeout) {
     return {
-      template: '<div></div>',
+      templateUrl: 'views/directives/notification.html',
       restrict: 'E',
+      scope: {
+        item: '='
+      },
       link: function postLink(scope, element, attrs) {
-        element.text('this is the notification directive');
+        $timeout(function(){
+          notifier.remove(scope.item, function(){
+          //   scope.$apply();
+          });
+        },1000)
       }
     };
   });
