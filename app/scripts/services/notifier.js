@@ -12,25 +12,31 @@ angular.module('riskidentApp')
     this.testing = true;
     var notifications = [];
     var counter = 0;
+    var limit = 5;
     // Public API here
     return {
-      add: function(message){
+      add: function(item){
         counter++
         notifications.push({
           id: counter,
-          title: 'notification',
-          content: message + counter
+          title: item.title,
+          type: item.type,
+          content: item.content + counter
         })
       },
       remove: function(item, cb){
         notifications = notifications.filter(i=>{
           return item.id != i.id;
         })
-        console.log(notifications)
-        cb.apply();
+      },
+      removeGroup: function(){
+        notifications = notifications.slice(notifications.length - (limit -1));
       },
       get: function(){
         return notifications;
+      },
+      limit: function() {
+        return limit;
       }
     };
   });

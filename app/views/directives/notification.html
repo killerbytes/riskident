@@ -1,1 +1,15 @@
-{{item.title}} - {{item.content}}: {{timer}}
+<div class="notification-item" ng-class="item.type">
+  <div class="icon">
+    <i class="fa fa-info-circle" aria-hidden="true"></i>
+  </div>
+  <div class="meta">
+    <div class="title">
+      {{item.title}}
+    </div>
+    <div class="content">
+      {{item.content}}
+    </div>
+  </div>
+  <a href="#" class="btn-close" ng-click="close()">&times;</a>
+  <a href="#" class="btn-close btn-close-group" ng-click="closeGroup()">&times;</a>
+</div>

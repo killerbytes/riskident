@@ -15,9 +15,8 @@ angular.module('riskidentApp')
         scope.notifications = []
         scope.$watch(function(){
           scope.notifications = notifier.get();
-          // console.log(scope.notifications, notifier.get())
+          scope.limit = scope.notifications.length > notifier.limit() ? true : false;
           return notifier.get()
-          // console.log(notifier.get)
         })
       }
     };

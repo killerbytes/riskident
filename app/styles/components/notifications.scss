@@ -1,0 +1,96 @@
+notifications{
+  width: 300px;
+  padding: 10px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    font-size: 12px;
+    li{
+      margin-bottom: 5px;
+      border-color: #DDD;
+    }
+  }
+  ul.max-limit{
+    li:nth-child(5){
+      border-top: 1px solid $border-color;
+      .btn-close.btn-close-group{
+        display: block;
+        font-size: initial;
+      }
+    }
+    li:last-child{
+      border-bottom: 1px solid $border-color;
+    }
+    li:nth-child(n+5){
+      margin-bottom: 0;
+      font-size: 11px;
+      .notification-item{
+        border: none;
+        border-left: 1px solid $border-color;
+        border-right: 1px solid $border-color;
+        .meta,
+        .icon{
+          padding: 6px 10px;
+        }
+      }
+      .btn-close{
+        display: none;
+      }
+    }
+
+  }
+}
+.notification-item{
+  border: 1px solid $border-color;
+  background-color: #FFF;
+  display: flex;
+  align-items: stretch;
+  position: relative;
+  .icon,
+  .meta,
+  .btn-close{
+    padding: 10px;
+  }
+  .icon{
+    font-size: 20px;
+    background-color: rgba(0,0,0,.2);
+    color: #FFF;
+    display: flex;
+    align-items: center;
+  }
+  .title{
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+  }
+  .btn-close{
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+    font-size: initial;
+  }
+  .btn-close.btn-close-group{
+    display: none;
+  }
+  &.info .icon{
+    background-color: $color-info;
+  }
+  &.warning .icon{
+    background-color: $color-warning;
+    .fa{
+      @extend .fa-exclamation-triangle;
+      font-size: 17px;
+    }
+  }
+  &.error .icon{
+    background-color: $color-error;
+    .fa{
+      @extend .fa-times-circle;
+    }
+  }
+}

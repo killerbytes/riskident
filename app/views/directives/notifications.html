@@ -1,5 +1,5 @@
-<ul>
-    <li ng-repeat="item in notifications track by item.id">
+<ul ng-class="{'max-limit': limit}">
+    <li ng-repeat="item in notifications | orderBy: '-id'">
         <notification item="item"></notification>
     </li>
 </ul>

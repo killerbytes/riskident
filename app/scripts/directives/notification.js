@@ -15,11 +15,17 @@ angular.module('riskidentApp')
         item: '='
       },
       link: function postLink(scope, element, attrs) {
-        $timeout(function(){
-          notifier.remove(scope.item, function(){
-          //   scope.$apply();
-          });
-        },1000)
+        if(scope.item.type == 'info'){
+          $timeout(function(){
+            notifier.remove(scope.item);
+          },90000)
+        }
+        scope.close = function(){
+          notifier.remove(scope.item);
+        }
+        scope.closeGroup = function(){
+          notifier.removeGroup();
+        }
       }
     };
   });

@@ -9,8 +9,14 @@
  */
 angular.module('riskidentApp')
   .controller('MainCtrl', function ($scope, notifier) {
-    $scope.add = function(){
-      notifier.add('testing')
+    $scope.model = {
+      type: 'info',
+      title: 'title',
+      content: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit'
+    }
+
+    $scope.submit = function(){
+      notifier.add($scope.model);
     }
 
   });
