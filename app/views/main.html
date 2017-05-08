@@ -1,7 +1,7 @@
 <div class="main">
   <div class="notifier">
     <h1>Notifier</h1>
-    <form ng-submit="submit()">
+    <form name="form.notifierForm" ng-submit="submit()" novalidate>
       <div class="option-group">
         <label for="info">
           <input type="radio" ng-model="model.type" id="info" value="info">
@@ -19,12 +19,14 @@
         </label>
       </div>
       <div class="form-group">
-        <input type="text" ng-model="model.title" placeholder="Title">
+        <input type="text" ng-model="model.title" name="title" placeholder="Title" required>
+        <p ng-show="form.notifierForm.title.$invalid && !form.notifierForm.title.$pristine" class="help-block">Title is required</p>
       </div>
       <div class="form-group">
-        <textarea name="" id="" rows="5" ng-model="model.content" placeholder="Content"></textarea>
+        <textarea rows="5" name="content" ng-model="model.content" placeholder="Content" required=""></textarea>
+        <p ng-show="form.notifierForm.content.$invalid && !form.notifierForm.content.$pristine" class="help-block">Content is required</p>
       </div>
-      <button type="submit">Send Notification</button>
+      <button type="submit" ng-disabled="form.notifierForm.$invalid">Send Notification</button>
     </form>
   </div>
 </div>

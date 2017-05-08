@@ -9,14 +9,16 @@
  */
 angular.module('riskidentApp')
   .controller('MainCtrl', function ($scope, notifier) {
+    $scope.form = {};
     $scope.model = {
-      type: 'info',
-      title: 'title',
-      content: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit'
+      type: 'info'
     }
 
     $scope.submit = function(){
       notifier.add($scope.model);
+      $scope.model.title = '';
+      $scope.model.content = '';
+      $scope.form.notifierForm.$setPristine();
     }
 
   });

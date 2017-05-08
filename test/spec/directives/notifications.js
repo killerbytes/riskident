@@ -4,6 +4,7 @@ describe('Directive: notifications', function () {
 
   // load the directive's module
   beforeEach(module('riskidentApp'));
+  beforeEach(module('foo'));
 
   var element,
     scope;
@@ -15,6 +16,7 @@ describe('Directive: notifications', function () {
   it('should make hidden element visible', inject(function ($compile) {
     element = angular.element('<notifications></notifications>');
     element = $compile(element)(scope);
-    expect(element.text()).toBe('this is the notifications directive');
+    scope.$digest();
+    expect(element.html()).toContain('<ul ng-class=');
   }));
 });

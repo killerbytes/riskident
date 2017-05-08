@@ -15,7 +15,7 @@ angular.module('riskidentApp')
         item: '='
       },
       link: function postLink(scope, element, attrs) {
-        if(scope.item.type == 'info'){
+        if(scope.item && scope.item.type == 'info'){
           $timeout(function(){
             notifier.remove(scope.item);
           },90000)

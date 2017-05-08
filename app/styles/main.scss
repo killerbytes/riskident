@@ -41,7 +41,11 @@ form{
   button{
     border: 1px solid;
     padding: 8px 12px;
-    background-color: #FFF;
+    background-color: #4caf50;
+    border-radius: 5px;
+  }
+  button:disabled{
+    background-color: #DDD;
   }
 }
 
@@ -66,5 +70,9 @@ form{
     .fa{
       margin-left: 5px;
     }
+  }
+  .help-block{
+    text-align: left;
+    color: $color-error;
   }
 }
