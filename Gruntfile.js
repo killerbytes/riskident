@@ -116,7 +116,14 @@ module.exports = function (grunt) {
           open: true,
           base: '<%= yeoman.dist %>'
         }
-      }
+      },
+      docs: {
+        options: {
+          open: true,
+          port: 8081,
+          base: 'docs'
+        }
+      },
     },
 
     // Make sure there are no obvious mistakes
@@ -168,7 +175,8 @@ module.exports = function (grunt) {
           ]
         }]
       },
-      server: '.tmp'
+      server: '.tmp',
+      docs: 'docs'
     },
 
     // Add vendor prefixed styles
@@ -518,6 +526,6 @@ module.exports = function (grunt) {
     'build'
   ]);
 
-  grunt.loadNpmTasks('grunt-ngdocs');
+  grunt.registerTask('docs', ['clean:docs', 'ngdocs', 'connect:docs:keepalive']);
 
 };
