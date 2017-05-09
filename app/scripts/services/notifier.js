@@ -8,12 +8,22 @@
  * Factory in the riskidentApp.
  */
 angular.module('riskidentApp')
-  .factory('notifier', function () {
-    this.testing = true;
+  .factory('notifier', function ($filter) {
     var notifications = [];
     var counter = 0;
     var _limit = 5;
-    // Public API here
+
+    /**
+    * @ngdoc
+    * @name riskidentApp.notifier#add
+    * @methodOf riskidentApp.notifier
+    *
+    * @description
+    * Method to add notification from the notification list
+    * @example
+    * notifier.get(item);
+    * @param {Object} entity notification
+    */
     function add(item){
       counter++;
       notifications.push({
@@ -24,29 +34,59 @@ angular.module('riskidentApp')
       })
     }
 
+    /**
+    * @ngdoc
+    * @name riskidentApp.notifier#remove
+    * @methodOf riskidentApp.notifier
+    *
+    * @description
+    * Method to remove item from the notification list
+    * @example
+    * notifier.remove(item);
+    * @param {Object} entity item
+    */
+
     function remove(item){
-      notifications = notifications.filter(function(i){
-        return item.id != i.id;
+      notifications = $filter('filter')(notifications, function(i){
+         return item.id !== i.id;
       })
     }
 
+    /**
+    * @ngdoc
+    * @name riskidentApp.notifier#removeGroup
+    * @methodOf riskidentApp.notifier
+    *
+    * @description
+    * Method to remove the grouped notification from the notification list
+    * @example
+    * notifier.removeGroup();
+    */
     function removeGroup(){
       notifications = notifications.slice(notifications.length - (_limit -1));
     }
 
+    /**
+    * @ngdoc
+    * @name riskidentApp.notifier#get
+    * @methodOf riskidentApp.notifier
+    *
+    * @description
+    * Method to get the notification list
+    * @example
+    * notifier.get();
+    * @returns {array} notification list
+    */
     function get(){
       return notifications;
     }
 
-    function limit() {
-      return _limit;
-    }
 
     return {
       add: add,
       remove: remove,
       removeGroup: removeGroup,
       get: get,
-      limit: limit
+      limit: _limit
     };
   });

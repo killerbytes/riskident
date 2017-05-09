@@ -452,7 +452,15 @@ module.exports = function (grunt) {
         configFile: 'test/karma.conf.js',
         singleRun: true
       }
+    },
+    ngdocs: {
+      options: {
+        scripts: ['angular.js'],
+        html5Mode: false
+      },
+      all: ['app/scripts/**/*.js']
     }
+
   });
 
 
@@ -509,4 +517,7 @@ module.exports = function (grunt) {
     'test',
     'build'
   ]);
+
+  grunt.loadNpmTasks('grunt-ngdocs');
+
 };

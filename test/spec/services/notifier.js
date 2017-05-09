@@ -21,7 +21,7 @@ describe('Service: notifier', function () {
   });
 
   it("should limit()", function () {
-    var item = notifier.limit();
+    var item = notifier.limit;
     expect(item).toBe(5);
   });
 
